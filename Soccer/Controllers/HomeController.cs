@@ -1,30 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Soccer.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Soccer.Controllers
 {
 	public class HomeController : Controller
 	{
+		SoccerContext db = new SoccerContext();
+
+		// Выводим всех футболистов
 		public ActionResult Index()
 		{
-			return View();
+			var players = db.Players.Include("Team");
+			return View(players.ToList());
 		}
 
-		public ActionResult About()
+		public ActionResult TeamDetails(int? id)
 		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
-			return View();
+			if (id == null)
+			{
+				return HttpNotFound();
+			}
+			Team team = db.Teams.Include("Players").FirstOrDefault(t => t.Id == id);
+			if (team == null)
+			{
+				return HttpNotFound();
+			}
+			return View(team);
 		}
 	}
 }
