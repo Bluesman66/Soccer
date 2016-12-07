@@ -165,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayersListViewModel.cs" />
     <Compile Include="Models\SoccerContext.cs" />
     <Compile Include="Models\SoccerDbInitializer.cs" />
     <Compile Include="Models\Team.cs" />
@@ -209,6 +210,7 @@
     <Content Include="Views\Home\TeamDetails.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\PlayersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
